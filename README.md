@@ -1,2 +1,2 @@
-# FSgenwthrslave
+# FSgenslave
 Connect to FSgenweather
