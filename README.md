@@ -1,2 +1,3 @@
 # FSgenslave
-Connect to FSgenweather
+The Raspberry pi app works along with FSgenweather.
+
