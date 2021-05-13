@@ -35,6 +35,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QProcess>
 #include <QFile>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -67,29 +68,21 @@ void MainWindow::getWeather() // This function will get kicked off when timer ti
     QNetworkAccessManager mgr;
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
-    // the HTTP request
-    /*QNetworkRequest req( QUrl( QString("/home/pi/wthr.dat") ) );
-    QNetworkReply *reply = mgr.get(req);
-    eventLoop.exec(); // blocks stack until "finished()" has been called
+    // Use scp in QProcess to copy the "wthr.dat" file from PSgenweather to this (fsgenslave) pi
 
-    if (reply->error() == QNetworkReply::NoError) {
 
-        QString strReply = (QString)reply->readAll(); // strReply holds the full data stream from weather station
-    */
+
+
+    // Read the contents of wthr.dat an place the contents into strReply
         QString strReply;
         QFile file;
         file.setFileName("/home/pi/wthr.dat");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         strReply= file.readAll();
-        qDebug() << strReply;
 
-        /*QFile file("/home/pi/wthr.dat"); // Write the weather data recieved to a file "wthr.dat"
-        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-            return;
+        //qDebug() << strReply;
 
-        QTextStream out(&file);
-        out << strReply;
-        */
+
         QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());  //Convert JSON from website to JSON Document
 
         QJsonObject root_obj = jsonResponse.object(); // Convert JSON Doc to Object
