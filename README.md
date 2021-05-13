@@ -1,5 +1,5 @@
 # FSgenslave
-![Client Photo](https://github.com/bonnette/FSgenslave/blob/main/IMG_3473s.jpg)
+![Client Photo](https://github.com/bonnette/FSgenslave/blob/main/photo/IMG_3475s.jpg)
 <br>
 This Project is a variation of my FSgenweather project. The FS in "FSgenslave" stands for Full Screen. The "gen" in the name stands for "general" in that instead of 
 grabbing data from a "SwitchDoc" weather station at the house. The weather data is derived from an api provided by openweathermap.com as well as QJsondocument to extract 
