@@ -15,4 +15,20 @@ soldered to the bottom of it.
 The case in the photo is from my Thingiverse repository and can be found here :
 <br>
 https://www.thingiverse.com/thing:4566312
-
+</br></br>
+Code and Pi modifications:</br>
+- FSgenweather was modified to save weather info in a file in the "/home/pi" folder. "wthr.dat" see the sample on this repository.
+- All code from FSgenweather was copied to FSgenslave.
+- The code on FSgenslave was modified to eliminate the connection to openweathermap.com
+- The code was further modified to read from the "wthr.dat" file to get its weather data.
+- A script file was created on the slave pi "getwthr.sh".
+- This script "getwthr.sh" copies the wthr.dat file from the master to the slave.
+- The script "getwthr.sh" runs every 3 minutes using CRONTAB.
+- No passwords were needed to complete the "wthr.dat" copy because keys were exchanged. 
+- see: https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
+</br>
+The operation goes like this:</br></br>
+- Every 3 minutes the master gets weather data from openweathermap.com.</br>
+- Every 3 minutes the slave copies the weather data (wthr.dat) from the master to the slave.</br>
+- Every 3 minutes the master and the slave display the weather data on their respective TFT's</br>
+</br>
