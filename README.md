@@ -32,3 +32,15 @@ The operation goes like this:</br></br>
 - Every 3 minutes the slave copies the weather data (wthr.dat) from the master to the slave.</br>
 - Every 3 minutes the master and the slave display the weather data on their respective TFT's</br>
 </br>
+To auto start the application in X-Windows after the X11 server has started edit:</br>
+/etc/xdg/lxsession/LXDE-pi/autostart </br></br>
+@lxpanel --profile LXDE-pi</br>
+@pcmanfm --desktop --profile LXDE-pi</br>
+@xscreensaver -no-splash</br>
+@xset s off</br>
+@xset -dpms</br>
+@xset s noblank</br>
+@/home/pi/fsweather  <-------- Add this to the end of the file. </br>
+(Assuming that fsweather is the application you want to start)</br>
+
+</br>
