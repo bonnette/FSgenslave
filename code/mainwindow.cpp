@@ -68,7 +68,7 @@ void MainWindow::getWeather() // This function will get kicked off when timer ti
     QNetworkAccessManager mgr;
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
-    // Use scp in QProcess to copy the "wthr.dat" file from PSgenweather to this (fsgenslave) pi
+    // In the future. Use scp in QProcess to copy the "wthr.dat" file from FSgenweather to this (FSgenslave) pi
 
 
 
