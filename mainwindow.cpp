@@ -1,11 +1,9 @@
-/* The is the Full Screen (FS) version of the genslave app.
- *   This program copies the wthr.dat file from the FSgenweather "pi" to get JSON info from it.
+/* The file "wthr.dat" is copied by the pi using CRONTAB and scp from the FSgenweather "Master" pi.
  *
- * The request looks like this: http://api.openweathermap.org/data/2.5/onecall?lat=30.22&lon=-95.36&exclude=hourly,minutely,alerts,daily&units=imperial&appid={your key}
- * The above request current weather for Conroe Tx.
+ * FSgenslave reads the file "wthr.dat" to get JSON formatted weather information.
  *
- *  The response looks something like this:
- *  {
+ * The contents of "wthr.dat" looks something like this:
+ * {
  * "lat":30.22,
  * "lon":-95.36,
  * "timezone":"America/Chicago",
@@ -14,12 +12,9 @@
  *            "uvi":6.84,"clouds":0,"visibility":10000,"wind_speed":1.99,"wind_deg":185,"wind_gust":4,"weather":[{"id":800,"main":"Clear",
  *            "description":"clear sky","icon":"01d"}]
  * }
- * }
  *
- * This version looks a little different because it integrates with the website a little differently
- * in order to get wind speed , wind gust and more.
- * From this response I extract weather data and display it in a window on a raspberry pi
- * Written by Larry Bonnette October 2020
+ * From this response, weather data is extracted and displayed it in a full screen window on a raspberry pi
+ * Written by Larry Bonnette May 2021
  */
 
 
@@ -70,10 +65,7 @@ void MainWindow::getWeather() // This function will get kicked off when timer ti
 
     // In the future. Use scp in QProcess to copy the "wthr.dat" file from FSgenweather to this (FSgenslave) pi
 
-
-
-
-    // Read the contents of wthr.dat an place the contents into strReply
+    // Read the contents of wthr.dat and place the contents into strReply
         QString strReply;
         QFile file;
         file.setFileName("/home/pi/wthr.dat");
